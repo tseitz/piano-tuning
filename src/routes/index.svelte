@@ -1,5 +1,5 @@
 <style>
-	h1, figure, p {
+	h1, figure {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -21,10 +21,6 @@
 		margin: 0 0 1em 0;
 	}
 
-	p {
-		margin: 1em auto;
-	}
-
 	@media (min-width: 480px) {
 		h1 {
 			font-size: 4em;
@@ -33,9 +29,10 @@
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Jordan Boland Piano Tuning</title>
 </svelte:head>
 
+<h1>Jordan Boland</h1>
 <h1>Great success!</h1>
 
 <figure>
@@ -43,4 +40,5 @@
 	<figcaption>HIGH FIVE!</figcaption>
 </figure>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<h2>Testimonials</h2>
+<p>Jordan did a really great job on my piano! She is also veeerrrryyyyy sexy, so don't you wait, call now!!</p>

@@ -11,7 +11,8 @@
 		background-color: white;
 		padding: 2em;
 		margin: 0 auto;
-		box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #6a5c80;
 	}
 </style>
 

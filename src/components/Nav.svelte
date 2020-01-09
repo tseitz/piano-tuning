@@ -4,9 +4,11 @@
 
 <style>
 	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
+		/* border-bottom: 1px solid rgba(255,62,0,0.1); */
 		font-weight: 300;
 		padding: 0 1em;
+    background-color: #524763;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 20px;
 	}
 
 	ul {
@@ -27,34 +29,35 @@
 	}
 
 	.selected {
-		position: relative;
 		display: inline-block;
 	}
 
-	.selected::after {
+	.selected::after, a:hover::after {
 		position: absolute;
 		content: '';
 		width: calc(100% - 1em);
 		height: 2px;
-		background-color: rgb(255,62,0);
+		background-color: white;
 		display: block;
 		bottom: -1px;
 	}
 
 	a {
+    position: relative;
 		text-decoration: none;
 		padding: 1em 0.5em;
-		display: block;
-	}
+    display: block;
+    color: white;
+  }
 </style>
 
 <nav>
 	<ul>
 		<li><a class:selected='{segment === undefined}' href='.'>home</a></li>
-		<li><a class:selected='{segment === "about"}' href='about'>about</a></li>
+		<li><a rel=prefetch class:selected='{segment === "contact"}' href='contact'>contact</a></li>
 
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
+		<!-- <li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li> -->
 	</ul>
 </nav>
