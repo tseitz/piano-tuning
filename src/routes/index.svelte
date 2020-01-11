@@ -27,6 +27,9 @@
 		}
 	}
 </style>
+<script>
+  import Piano from '../Components/Piano.svelte';
+</script>
 
 <svelte:head>
 	<title>Jordan Boland Piano Tuning</title>
@@ -39,6 +42,8 @@
 	<img alt='Borat' src='great-success.png'>
 	<figcaption>HIGH FIVE!</figcaption>
 </figure>
+
+<Piano />
 
 <h2>Testimonials</h2>
 <p>Jordan did a really great job on my piano! She is also veeerrrryyyyy sexy, so don't you wait, call now!!</p>
