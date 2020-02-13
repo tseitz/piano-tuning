@@ -1,49 +1,54 @@
-<style>
-	h1, figure {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
 <script>
-  import Piano from '../Components/Piano.svelte';
+  import Piano from "../Components/Piano.svelte";
 </script>
 
+<style>
+  h1,
+  figure {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+  }
+
+  figure {
+    margin: 0 0 1em 0;
+  }
+
+  img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 0 1em 0;
+  }
+
+  @media (min-width: 480px) {
+    h1 {
+      font-size: 4em;
+    }
+  }
+</style>
+
 <svelte:head>
-	<title>Jordan Boland Piano Tuning</title>
+  <title>Jordan Boland Piano Tuning</title>
 </svelte:head>
 
 <h1>Jordan Boland</h1>
 <h1>Great success!</h1>
 
 <figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
+  <img alt="Borat" src="great-success.png" />
+  <figcaption>HIGH FIVE!</figcaption>
 </figure>
 
 <Piano />
 
 <h2>Testimonials</h2>
-<p>Jordan did a really great job on my piano! She is also veeerrrryyyyy sexy, so don't you wait, call now!!</p>
+<p>
+  Jordan did a really great job on my piano! She is also veeerrrryyyyy sexy, so
+  don't you wait, call now!!
+</p>
