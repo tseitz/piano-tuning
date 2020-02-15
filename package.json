@@ -1,5 +1,5 @@
 {
-  "name": "PianoTuning",
+  "name": "piano-tuning",
   "description": "Jordan's Piano Tuning Website",
   "version": "0.0.1",
   "homepage": "https://tseitz.github.io/PianoTuning",
@@ -8,9 +8,9 @@
     "dev": "sapper dev",
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
     "build:tailwind": "SET NODE_ENV=production postcss static/tailwind.css -o static/index.css",
-    "build": "npm run build:tailwind && sapper build --legacy",
+    "build": "npm run build:tailwind && sapper build",
     "deploy": "gh-pages -d __sapper__/build",
-    "export": "sapper export --legacy",
+    "export": "sapper export",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
