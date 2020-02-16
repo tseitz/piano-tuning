@@ -1,5 +1,5 @@
 <script>
-  import Piano from "../Components/Piano.svelte";
+  import Piano from "../components/Piano.svelte";
 </script>
 
 <style>
