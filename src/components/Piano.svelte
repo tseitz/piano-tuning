@@ -1,23 +1,28 @@
 <script>
   import { keyMetadata } from 'api.js';
 
-  let keys = {};
-  let keyTracking = keyMetadata;
+  const KEYS = ['a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j'];
 
-  function playKey(e) {
-    if (keyTracking[e.target.dataset.note].plays == 1) {
-      keyTracking[e.target.dataset.note].currSrc =
-        keyTracking[e.target.dataset.note].inTuneSource;
+  function playKey(i) {
+    if (keyMetadata[i].plays == 1) {
+      keyMetadata[i].currSrc = keyMetadata[i].inTuneSource;
     }
 
-    keys[e.target.dataset.note].currentTime = 0;
-    keys[e.target.dataset.note].play();
-    keyTracking[e.target.dataset.note].plays++;
+    keyMetadata[i].keyAudio.currentTime = 0;
+    keyMetadata[i].keyAudio.play();
+    keyMetadata[i].plays++;
+  }
+
+  function handleKeydown(e) {
+    const keyIndex = KEYS.indexOf(e.key);
+    if (keyIndex > -1) {
+      playKey(keyIndex);
+    }
   }
 
   function toggleActive() {
-    for (const key in keyTracking) {
-      keyTracking[key].currSrc = keyTracking[key].inTuneSource;
+    for (const key in keyMetadata) {
+      keyMetadata[key].currSrc = keyMetadata[key].inTuneSource;
     }
   }
 
@@ -60,41 +65,16 @@
   }
 </style>
 
+<svelte:window on:keydown="{handleKeydown}" />
+
 <div class="piano-wrapper">
-  <div data-note="C" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.C}" src="{keyTracking.C.currSrc}"></audio>
+  {#each keyMetadata as key, i}
+  <div
+    data-note="{key.note}"
+    class="key {key.type}"
+    on:mousedown="{() => playKey(i)}"
+  >
+    <audio bind:this="{key.keyAudio}" src="{key.currSrc}"></audio>
   </div>
-  <div data-note="Db" class="key black" on:mousedown="{playKey}">
-    <audio bind:this="{keys.Db}" src="{keyTracking.Db.currSrc}"></audio>
-  </div>
-  <div data-note="D" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.D}" src="{keyTracking.D.currSrc}"></audio>
-  </div>
-  <div data-note="Eb" class="key black" on:mousedown="{playKey}">
-    <audio bind:this="{keys.Eb}" src="{keyTracking.Eb.currSrc}"></audio>
-  </div>
-  <div data-note="E" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.E}" src="{keyTracking.E.currSrc}"></audio>
-  </div>
-  <div data-note="F" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.F}" src="{keyTracking.F.currSrc}"></audio>
-  </div>
-  <div data-note="Gb" class="key black" on:mousedown="{playKey}">
-    <audio bind:this="{keys.Gb}" src="{keyTracking.Gb.currSrc}"></audio>
-  </div>
-  <div data-note="G" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.G}" src="{keyTracking.G.currSrc}"></audio>
-  </div>
-  <div data-note="Ab" class="key black" on:mousedown="{playKey}">
-    <audio bind:this="{keys.Ab}" src="{keyTracking.Ab.currSrc}"></audio>
-  </div>
-  <div data-note="A" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.A}" src="{keyTracking.A.currSrc}"></audio>
-  </div>
-  <div data-note="Bb" class="key black" on:mousedown="{playKey}">
-    <audio bind:this="{keys.Bb}" src="{keyTracking.Bb.currSrc}"></audio>
-  </div>
-  <div data-note="B" class="key white" on:mousedown="{playKey}">
-    <audio bind:this="{keys.B}" src="{keyTracking.B.currSrc}"></audio>
-  </div>
+  {/each}
 </div>
