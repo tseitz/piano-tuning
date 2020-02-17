@@ -1,32 +1,31 @@
 <script>
-  import { keyMetadata } from 'api.js';
+  import { keyMetadata, keyboardKeys } from 'api.js';
 
-  const KEYS = ['a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j'];
+  // create a copy so we can manipulate it
+  let keyTracking = keyMetadata;
 
   function playKey(i) {
-    if (keyMetadata[i].plays == 1) {
-      keyMetadata[i].currSrc = keyMetadata[i].inTuneSource;
+    if (keyTracking[i].plays == 1) {
+      keyTracking[i].currSrc = keyTracking[i].inTuneSource;
     }
 
-    keyMetadata[i].keyAudio.currentTime = 0;
-    keyMetadata[i].keyAudio.play();
-    keyMetadata[i].plays++;
+    keyTracking[i].keyAudio.currentTime = 0;
+    keyTracking[i].keyAudio.play();
+    keyTracking[i].plays++;
   }
 
   function handleKeydown(e) {
-    const keyIndex = KEYS.indexOf(e.key);
+    const keyIndex = keyboardKeys.indexOf(e.key);
     if (keyIndex > -1) {
       playKey(keyIndex);
     }
   }
 
   function toggleActive() {
-    for (const key in keyMetadata) {
-      keyMetadata[key].currSrc = keyMetadata[key].inTuneSource;
+    for (const key in keyTracking) {
+      keyTracking[key].currSrc = keyTracking[key].inTuneSource;
     }
   }
-
-  toggleActive();
 </script>
 
 <style>
@@ -68,7 +67,7 @@
 <svelte:window on:keydown="{handleKeydown}" />
 
 <div class="piano-wrapper">
-  {#each keyMetadata as key, i}
+  {#each keyTracking as key, i}
   <div
     data-note="{key.note}"
     class="key {key.type}"
