@@ -5,13 +5,15 @@
   let keyTracking = keyMetadata;
 
   function playKey(i) {
-    if (keyTracking[i].plays == 1) {
-      keyTracking[i].currSrc = keyTracking[i].inTuneSource;
+    const key = keyTracking[i];
+
+    if (key.plays == 1) {
+      key.currSrc = key.inTuneSource;
     }
 
-    keyTracking[i].keyAudio.currentTime = 0;
-    keyTracking[i].keyAudio.play();
-    keyTracking[i].plays++;
+    key.keyAudio.currentTime = 0;
+    key.keyAudio.play();
+    key.plays++;
   }
 
   function handleKeydown(e) {
