@@ -1,4 +1,5 @@
 <script>
+  import Toggle from "./Toggle.svelte";
   import { keyMetadata, keyboardKeys } from 'api.js';
 
   // create a copy so we can manipulate it
@@ -36,8 +37,8 @@
     position: relative;
     display: flex;
     flex-flow: row nowrap;
-    width: 100%;
     min-width: 12em;
+    margin: 0 -2em; /* offset body padding */
   }
 
   .key {
@@ -80,3 +81,5 @@
   </div>
   {/each}
 </div>
+
+<Toggle />

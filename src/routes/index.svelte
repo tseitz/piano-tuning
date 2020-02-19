@@ -37,12 +37,10 @@
   <title>Jordan Boland Piano Tuning</title>
 </svelte:head>
 
-<h1>Jordan Boland</h1>
-<h1>Great success!</h1>
+<h1>Jordan Boland Piano Tuning</h1>
 
-<figure>
-  <img alt="Borat" src="great-success.png" />
-  <figcaption>HIGH FIVE!</figcaption>
+<figure class="flex justify-center">
+  <img alt="Borat" src="great-success.png"/>
 </figure>
 
 <Piano />
