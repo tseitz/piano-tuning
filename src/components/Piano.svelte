@@ -18,6 +18,7 @@
 
   function handleKeydown(e) {
     const keyIndex = keyboardKeys.indexOf(e.key);
+
     if (keyIndex > -1) {
       playKey(keyIndex);
     }
