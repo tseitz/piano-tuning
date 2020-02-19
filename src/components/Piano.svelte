@@ -8,7 +8,7 @@
     const key = keyTracking[i];
 
     if (key.plays == 1) {
-      key.currSrc = key.inTuneSource;
+      key.keyAudio.src = key.inTuneSource;
     }
 
     key.keyAudio.currentTime = 0;
@@ -26,7 +26,7 @@
 
   function toggleActive() {
     for (const key in keyTracking) {
-      keyTracking[key].currSrc = keyTracking[key].inTuneSource;
+      keyTracking[key].keyAudio.src = keyTracking[key].inTuneSource;
     }
   }
 </script>
@@ -73,10 +73,10 @@
   {#each keyTracking as key, i}
   <div
     data-note="{key.note}"
-    class="key {key.type}"
+    class="key {key.color}"
     on:mousedown="{() => playKey(i)}"
   >
-    <audio bind:this="{key.keyAudio}" src="{key.currSrc}"></audio>
+    <audio bind:this="{key.keyAudio}" src="{key.outtaTuneSource}"></audio>
   </div>
   {/each}
 </div>
