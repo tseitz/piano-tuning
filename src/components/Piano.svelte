@@ -26,9 +26,9 @@
   }
 
   function toggleActive() {
-    for (const key in keyTracking) {
-      keyTracking[key].keyAudio.src = keyTracking[key].inTuneSource;
-    }
+    keyTracking.map((key) => {
+      key.keyAudio.src = key.inTuneSource;
+    });
   }
 </script>
 
@@ -82,4 +82,4 @@
   {/each}
 </div>
 
-<Toggle />
+<Toggle on:toggled={toggleActive}/>
