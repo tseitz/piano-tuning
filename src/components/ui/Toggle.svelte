@@ -19,7 +19,7 @@
 
   .toggled {
     position: relative;
-    left: 4rem;
+    left: 50%;
     transition: left 0.5s ease-out;
   }
 
@@ -28,18 +28,11 @@
       left: 0px;
     }
     100% {
-      left: 4rem;
+      left: 50%;
     }
   }
 </style>
 
-<h3>Regular Ass Piano</h3>
-
-<div
-  class="h-16 w-32 rounded-full bg-green-300"
-  on:click="{() => toggleTune()}"
->
-  <div
-    class="h-16 w-16 rounded-full bg-green-500 {toggled === true ? 'toggled': 'untoggled'}"
-  ></div>
+<div class="h-10 w-20 rounded-full bg-green-300" on:click="{() => toggleTune()}">
+  <div class="h-10 w-10 rounded-full bg-green-500 {toggled === true ? 'toggled': 'untoggled'}"></div>
 </div>

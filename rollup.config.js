@@ -6,20 +6,19 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+
 import getPreprocessor from 'svelte-preprocess';
 import postcss from 'rollup-plugin-postcss';
 import PurgeSvelte from 'purgecss-from-svelte';
 import path from 'path';
+
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) =>
-  (warning.code === 'CIRCULAR_DEPENDENCY' &&
-    /[/\\]@sapper[/\\]/.test(warning.message)) ||
-  onwarn(warning);
-const dedupe = (importee) =>
-  importee === 'svelte' || importee.startsWith('svelte/');
+  (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
+const dedupe = (importee) => importee === 'svelte' || importee.startsWith('svelte/');
 
 const postcssPlugins = (purgecss = false) => {
   return [
@@ -50,7 +49,7 @@ const postcssPlugins = (purgecss = false) => {
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {
-      plugins: postcssPlugins() // Don't need purgecss because Svelte handle unused css for you.
+      plugins: postcssPlugins() // Don't need purgecss because Svelte handles unused css for you.
     }
   }
 });
@@ -131,8 +130,7 @@ export default {
       })
     ],
     external: Object.keys(pkg.dependencies).concat(
-      require('module').builtinModules ||
-        Object.keys(process.binding('natives'))
+      require('module').builtinModules || Object.keys(process.binding('natives'))
     ),
     onwarn
   },
