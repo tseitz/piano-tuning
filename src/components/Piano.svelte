@@ -1,6 +1,6 @@
 <script>
   import Toggle from "./ui/Toggle.svelte";
-  import { keyMetadata, keyboardKeys } from 'api.js';
+  import { keyMetadata, keyboardKeys } from '../lib/api.js';
 
   let toggled = false;
   let activeKey = -1;
