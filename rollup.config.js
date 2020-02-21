@@ -34,8 +34,7 @@ const postcssPlugins = (purgecss = false) => {
           {
             extractor: PurgeSvelte,
 
-            // Specify the file extensions to include when scanning for
-            // class names.
+            // Specify the file extensions to include when scanning for class names.
             extensions: ['svelte', 'html']
           }
         ],

@@ -2,47 +2,56 @@
   import Toggle from "./ui/Toggle.svelte";
   import { keyMetadata, keyboardKeys } from 'api.js';
 
-  // create a copy so we can manipulate it
-  let keyTracking = keyMetadata;
   let toggled = false;
   let activeKey = -1;
 
   function playKey(key, i) {
-    activeKey = -1;
     key.keyAudio.currentTime = 0;
     
     activeKey = i;
-    key.keyAudio.play().then(() => {
-      setTimeout(() => {
-        activeKey = -1;
-      }, 1000);
-    });
+    key.keyAudio.play();
+  }
+
+  function stopKey(key) {
+    activeKey = -1;
   }
 
   function handleKeydown(e) {
     const keyIndex = keyboardKeys.indexOf(e.key);
 
     if (keyIndex > -1) {
-      playKey(keyTracking[keyIndex], keyIndex);
+      playKey(keyMetadata[keyIndex], keyIndex);
+    }
+  }
+
+  function handleKeyup(e) {
+    const keyIndex = keyboardKeys.indexOf(e.key);
+
+    if (keyIndex > -1) {
+      stopKey(keyMetadata[keyIndex]);
     }
   }
 
   function toggleActive(event) {
     toggled = event.detail;
 
-    keyTracking.map((key) => {
+    keyMetadata.map((key) => {
       key.keyAudio.src = toggled ? key.inTuneSource : key.outtaTuneSource;
     });
   }
 </script>
 
 <style>
+  h3 {
+    font-size: 2rem;
+  }
+
   .piano-wrapper {
     position: relative;
     display: flex;
     flex-flow: row nowrap;
     min-width: 12em;
-    margin: 0 -2em; /* offset body padding */
+    margin: 0 -2em; /* offset body padding for full width */
   }
 
   .key {
@@ -70,15 +79,16 @@
   }
 </style>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKeydown} on:keyup={handleKeyup}/>
 
 <div class="piano-wrapper">
-  {#each keyTracking as key, i}
+  {#each keyMetadata as key, i}
     {#if key.color == 'white'}
       <div
         class="key white {activeKey == i ? 'bg-gray-300' : 'bg-white'}"
         data-note={key.note}
-        on:mousedown="{(e) => playKey(key, i)}"
+        on:mousedown="{() => playKey(key, i)}"
+        on:mouseup="{() => stopKey(key)}"
       >
         <audio bind:this={key.keyAudio} src={key.outtaTuneSource}></audio>
       </div>
@@ -86,7 +96,8 @@
       <div
         class="key black {activeKey == i ? 'bg-black' : 'bg-gray-800'}"
         data-note={key.note}
-        on:mousedown="{(e) => playKey(key, i)}"
+        on:mousedown="{() => playKey(key, i)}"
+        on:mouseup="{() => stopKey(key)}"
       >
         <audio bind:this={key.keyAudio} src={key.outtaTuneSource}></audio>
       </div>
@@ -94,11 +105,11 @@
   {/each}
 </div>
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center my-4">
   {#if !toggled}
-    <p>Before Jordan</p>
+    <h3 class="my-2">Life Before Jordan</h3>
   {:else}
-    <p>After Jordan</p>
+    <h3 class="my-2">Life After Jordan</h3>
   {/if}
   <Toggle on:toggled={toggleActive} toggled/>
 </div>
