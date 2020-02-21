@@ -6,7 +6,9 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+// import preprocess from './svelte.config';
 
+const preprocess = require('./svelte.config');
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -26,6 +28,7 @@ export default {
       }),
       svelte({
         dev,
+        preprocess: preprocess(),
         hydratable: true,
         emitCss: true
       }),
@@ -78,7 +81,8 @@ export default {
       }),
       svelte({
         generate: 'ssr',
-        dev
+        dev,
+        preprocess: preprocess()
       }),
       resolve({
         dedupe

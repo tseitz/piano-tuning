@@ -1,9 +1,9 @@
-<script>
+<script lang="typescript">
   import Toggle from "./ui/Toggle.svelte";
   import { keyMetadata, keyboardKeys } from '../lib/api.js';
 
-  let toggled = false;
-  let activeKey = -1;
+  let toggled: boolean = false;
+  let activeKey: number = -1;
 
   function playKey(key, i) {
     key.keyAudio.currentTime = 0;
