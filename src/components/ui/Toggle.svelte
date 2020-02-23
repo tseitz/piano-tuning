@@ -1,12 +1,12 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
   let toggled = false;
 
   const dispatch = createEventDispatcher();
 
   function toggleTune() {
     toggled = !toggled;
-    dispatch('toggled', toggled);
+    dispatch("toggled", toggled);
   }
 </script>
 
@@ -33,6 +33,7 @@
   }
 </style>
 
-<div class="h-10 w-20 rounded-full bg-green-300" on:click="{() => toggleTune()}">
-  <div class="h-10 w-10 rounded-full bg-green-500 {toggled === true ? 'toggled': 'untoggled'}"></div>
+<div class="h-10 w-20 rounded-full bg-green-300" on:click={() => toggleTune()}>
+  <div
+    class="h-10 w-10 rounded-full bg-green-500 {toggled === true ? 'toggled' : 'untoggled'}" />
 </div>

@@ -40,7 +40,7 @@
 <h1>Jordan Boland Piano Tuning</h1>
 
 <figure class="flex justify-center">
-  <img alt="Borat" src="great-success.png"/>
+  <img alt="Borat" src="great-success.png" />
 </figure>
 
 <Piano />
