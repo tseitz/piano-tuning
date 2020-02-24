@@ -1,4 +1,4 @@
-export interface PianoPianoKeyMetadata {
+export interface PianoKeyMetadata {
   note: string;
   keyAudio: HTMLAudioElement;
   outtaTuneSource: string;

@@ -1,4 +1,4 @@
-<script>
+<script lang="typescript">
   import Piano from "../components/Piano.svelte";
 </script>
 

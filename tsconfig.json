@@ -1,8 +1,26 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "types": ["@pyoner/svelte-types"]
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    // "lib": ["es5", "es6", "dom"],
+    "typeRoots": ["node_modules/@types"],
+    "types": ["@pyoner/svelte-types"],
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules/*"]
 }

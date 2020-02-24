@@ -1,7 +1,7 @@
-<script>
+<script lang="typescript">
   import Nav from "../components/Nav.svelte";
 
-  export let segment = "";
+  export let segment: string;
 </script>
 
 <style>

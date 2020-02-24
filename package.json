@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "run-p watch:tailwind sapper:dev",
     "sapper:dev": "sapper dev",
-    "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
-    "build:tailwind": "cross-env NODE_ENV=production postcss static/tailwind.css -o static/index.css",
+    "watch:tailwind": "postcss src/tailwind.pcss -o static/index.css -w",
+    "build:tailwind": "cross-env NODE_ENV=production postcss src/tailwind.pcss -o static/index.css",
     "build": "run-p build:tailwind build:sapper",
     "build:sapper": "cross-env NODE_ENV=production sapper build --legacy",
     "export": "sapper export --legacy",
@@ -18,7 +18,6 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.0.5",
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^0.4.0"
@@ -29,14 +28,23 @@
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/runtime": "^7.8.3",
+    "@fullhuman/postcss-purgecss": "^2.0.5",
+    "@pyoner/svelte-ts-preprocess": "^1.2.1",
     "@pyoner/svelte-types": "^3.4.4-2",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.1.0",
     "@rollup/plugin-replace": "^2.2.0",
+    "@types/express": "^4.17.2",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
     "cross-env": "^7.0.0",
+    "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-svelte3": "^2.7.3",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.0",
+    "postcss-preset-env": "^6.7.0",
     "rollup": "^1.30.1",
     "rollup-plugin-babel": "^4.0.2",
     "rollup-plugin-commonjs": "^10.0.0",
@@ -44,9 +52,9 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-svelte": "^5.1.1",
     "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.24.3",
     "sapper": "^0.27.0",
     "svelte": "^3.18.1",
-    "svelte-preprocess": "^3.4.0",
     "tailwindcss": "^1.2.0",
     "typescript": "^3.8.2"
   }

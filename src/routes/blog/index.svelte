@@ -8,7 +8,7 @@
   }
 </script>
 
-<script>
+<script lang="typescript">
   export let posts;
 </script>
 

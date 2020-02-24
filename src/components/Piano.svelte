@@ -1,12 +1,12 @@
 <script lang="typescript">
   import Toggle from "./ui/Toggle.svelte";
-  import { keyMetadata, keyboardKeys } from "../lib/api.js";
+  import { keyMetadata, keyboardKeys } from "../lib/api";
   import { PianoKeyMetadata } from "../models/PianoKeyMetadata";
 
   let toggled: boolean = false;
   let activeKey: number = -1;
 
-  function playKey(key: PianoKeyMetadata, i: int) {
+  function playKey(key: PianoKeyMetadata, i: number) {
     key.keyAudio.currentTime = 0;
 
     activeKey = i;
@@ -17,7 +17,7 @@
     activeKey = -1;
   }
 
-  function handleKeydown(e: Event) {
+  function handleKeydown(e: KeyboardEvent) {
     const keyIndex = keyboardKeys.indexOf(e.key);
 
     if (keyIndex > -1) {
@@ -25,7 +25,7 @@
     }
   }
 
-  function handleKeyup(e: Event) {
+  function handleKeyup(e: KeyboardEvent) {
     const keyIndex = keyboardKeys.indexOf(e.key);
 
     if (keyIndex > -1) {
@@ -33,8 +33,8 @@
     }
   }
 
-  function toggleActive(e: Event) {
-    <boolean>toggled = e.detail;
+  function toggleActive(e: CustomEvent) {
+    toggled = e.detail as boolean;
 
     keyMetadata.map(key => {
       key.keyAudio.src = toggled ? key.inTuneSource : key.outtaTuneSource;

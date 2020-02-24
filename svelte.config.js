@@ -1,5 +1,4 @@
-const sveltePreprocess = require('svelte-preprocess');
+// This is ONLY used for VS Code IntelliSense
+const { preprocess } = require('@pyoner/svelte-ts-preprocess');
 
-module.exports = {
-  preprocess: sveltePreprocess()
-};
+module.exports = { preprocess: preprocess() };

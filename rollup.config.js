@@ -6,8 +6,9 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+import { preprocess } from '@pyoner/svelte-ts-preprocess';
+import typescript from 'rollup-plugin-typescript2';
 
-const preprocess = require('./svelte.config');
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -27,15 +28,16 @@ export default {
       }),
       svelte({
         dev,
-        preprocess: preprocess,
         hydratable: true,
-        emitCss: true
+        emitCss: true,
+        preprocess: preprocess()
       }),
       resolve({
         browser: true,
         dedupe
       }),
       commonjs(),
+      typescript(),
 
       legacy &&
         babel({
@@ -81,11 +83,12 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
-        preprocess: preprocess
+        preprocess: preprocess()
       }),
       resolve({
         dedupe
       }),
+      typescript(),
       commonjs()
     ],
     external: Object.keys(pkg.dependencies).concat(

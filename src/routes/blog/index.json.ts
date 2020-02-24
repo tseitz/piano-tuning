@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 import posts from './_posts';
 
 const contents = JSON.stringify(
@@ -9,7 +10,7 @@ const contents = JSON.stringify(
   })
 );
 
-export function get(req, res) {
+export function get(req: Request, res: Response) {
   res.writeHead(200, {
     'Content-Type': 'application/json'
   });

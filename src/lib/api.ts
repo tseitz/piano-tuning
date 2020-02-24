@@ -1,8 +1,8 @@
-import { PianoPianoKeyMetadata } from '../models/PianoPianoKeyMetadata';
+import { PianoKeyMetadata } from '../models/PianoKeyMetadata';
 
 export const keyboardKeys: string[] = ['a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j'];
 
-export const keyMetadata: PianoPianoKeyMetadata[] = [
+export const keyMetadata: PianoKeyMetadata[] = [
   {
     note: 'C',
     keyAudio: <HTMLAudioElement>{},
