@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ESNEXT",
     "module": "ESNEXT",
-    // "lib": ["es5", "es6", "dom"],
     "typeRoots": ["node_modules/@types"],
     "types": ["@pyoner/svelte-types"],
     "allowSyntheticDefaultImports": true,
@@ -21,6 +20,6 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*"]
+  "exclude": ["node_modules/*"],
+  "include": ["src/**/*", "src/node_modules/*"]
 }

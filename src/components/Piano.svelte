@@ -1,6 +1,6 @@
 <script lang="typescript">
   import Toggle from "./ui/Toggle.svelte";
-  import { keyMetadata, keyboardKeys } from "../lib/api";
+  import { keyMetadata, keyboardKeys } from "lib/api";
   import { PianoKeyMetadata } from "../models/PianoKeyMetadata";
 
   let toggled: boolean = false;

@@ -7,7 +7,7 @@
 // we don't want to create an `/blog/posts` route — the leading
 // underscore tells Sapper not to do that.
 
-import { Post } from '../../models/Post';
+import { Post } from 'models/Post';
 
 const posts: Post[] = [
   {
