@@ -1,7 +1,7 @@
 <script lang="typescript">
   import Toggle from "./ui/Toggle.svelte";
   import { keyMetadata, keyboardKeys } from "lib/api";
-  import { PianoKeyMetadata } from "../models/PianoKeyMetadata";
+  import { PianoKeyMetadata } from "models/PianoKeyMetadata";
 
   let toggled: boolean = false;
   let activeKey: number = -1;
@@ -13,7 +13,7 @@
     key.keyAudio.play();
   }
 
-  function stopKey(key: PianoKeyMetadata) {
+  function stopKey() {
     activeKey = -1;
   }
 
@@ -29,7 +29,7 @@
     const keyIndex = keyboardKeys.indexOf(e.key);
 
     if (keyIndex > -1) {
-      stopKey(keyMetadata[keyIndex]);
+      stopKey();
     }
   }
 
@@ -89,7 +89,7 @@
         class="key white {activeKey == i ? 'bg-gray-300' : 'bg-white'}"
         data-note={key.note}
         on:mousedown={() => playKey(key, i)}
-        on:mouseup={() => stopKey(key)}>
+        on:mouseup={() => stopKey()}>
         <audio bind:this={key.keyAudio} src={key.outtaTuneSource} />
       </div>
     {:else}
@@ -97,7 +97,7 @@
         class="key black {activeKey == i ? 'bg-black' : 'bg-gray-800'}"
         data-note={key.note}
         on:mousedown={() => playKey(key, i)}
-        on:mouseup={() => stopKey(key)}>
+        on:mouseup={() => stopKey()}>
         <audio bind:this={key.keyAudio} src={key.outtaTuneSource} />
       </div>
     {/if}
