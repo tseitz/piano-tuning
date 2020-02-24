@@ -27,7 +27,7 @@ export default {
       }),
       svelte({
         dev,
-        preprocess: preprocess(),
+        preprocess: preprocess,
         hydratable: true,
         emitCss: true
       }),
@@ -81,7 +81,7 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
-        preprocess: preprocess()
+        preprocess: preprocess
       }),
       resolve({
         dedupe

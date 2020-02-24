@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es2015"
+    "module": "es2015",
+    "types": ["@pyoner/svelte-types"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

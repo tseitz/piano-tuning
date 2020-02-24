@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+
   let toggled = false;
 
   const dispatch = createEventDispatcher();
